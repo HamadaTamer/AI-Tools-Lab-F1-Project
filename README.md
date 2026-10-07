@@ -76,11 +76,51 @@ The dataset contains multiple relational tables covering drivers, constructors, 
 
 ## Development
 
-Kaggle will be used as the main execution environment, while GitHub will be used for version control and project history.
+The notebook `F1_podium_prediction.ipynb` runs top to bottom (Run All) either **locally on CPU** or on **Kaggle**. It finds the data automatically in `data/` or under `/kaggle/input/`. GitHub is used for version control.
 
-The notebook will be kept structured into clearly separated sections for cleaning, analysis, feature engineering, modeling, experiments, XAI, and final inference.
+### Run locally (any OS, venv)
 
+Needs Python 3.11–3.13. From the repo root:
 
+```powershell
+# Windows (PowerShell)
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+```bash
+# macOS / Linux
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+The `.venv/` folder is git-ignored (virtual environments aren't portable), so each person creates their own with the commands above. In VS Code, pick the `.venv` interpreter as the notebook kernel (Select Kernel → Python Environments → `.venv`).
+
+<details>
+<summary>Alternative: conda</summary>
+
+```powershell
+conda create -n f1 python=3.11 -y
+conda activate f1
+pip install -r requirements.txt
+```
+</details>
+
+Get the data into `data/` (the folder is git-ignored, so the CSVs are never committed). Either:
+
+- **Browser:** download the zip from https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020 and extract the CSVs into `data/` (so you have `data/results.csv`, `data/races.csv`, ...), or
+- **Kaggle API** (needs `kaggle.json` from Kaggle → Settings → API, placed in `%USERPROFILE%\.kaggle\`):
+  ```powershell
+  kaggle datasets download -d rohanrao/formula-1-world-championship-1950-2020 -p data --unzip
+  ```
+
+Then open the notebook in VS Code (select the `.venv` kernel) or run `jupyter lab`, and **Run All**. Outputs (tables, CSVs, the modeling table) are written to `outputs/`.
+
+### Run on Kaggle
+
+Upload the notebook, attach the dataset *Formula 1 World Championship (1950 - 2024)*, add `statsmodels` if it is missing, and Run All.
 
 ## Status
 
