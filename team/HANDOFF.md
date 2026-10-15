@@ -81,7 +81,7 @@ Sections 11 and 12 can run in parallel; 13–16 need the chosen model from 11–
 
 ### 11. Baseline and statistical models
 
-- A baseline (the brief accepts a statistical model or a shallow FFNN; `make_lr()` is ready).
+- A baseline (the brief accepts a statistical model or a shallow FFNN; `make_lr()` is ready). It must be a classifier: the course staff pointed out that *linear* regression is not suited to classification; logistic regression is.
 - At least two different statistical models (e.g. logistic regression, random forest, gradient boosting).
 - Hyperparameter tuning on validation, shown as a table of the values tried.
 - How each model works and its limitations, in a few lines each.
@@ -93,6 +93,7 @@ Sections 11 and 12 can run in parallel; 13–16 need the chosen model from 11–
 - 1–2 hidden layers, Keras or PyTorch, inputs from `make_preprocessor()`.
 - Training curves (loss and validation metric per epoch), early stopping on validation.
 - At least one architecture or hyperparameter variant, compared with the baseline.
+- Improve it for real (layer sizes, regularization, learning rate, early stopping) and show the attempts. The course staff warned that a deliberately weak or tiny network, used only to make another model look better, will be questioned.
 - Add the final network to `models_to_compare` (wrapped, see section 1).
 
 ### 13. Model comparison
@@ -106,6 +107,7 @@ Sections 11 and 12 can run in parallel; 13–16 need the chosen model from 11–
 
 - Retrain the chosen model once per group in `FEATURE_GROUPS`, each time without that group; report the drop in validation metrics per group.
 - Section 8.3 is the forward version made before training; the ablation is the after-training measurement.
+- Read the drops with the overlap in mind: qualifying, standings and driver form all measure current pace, so removing one costs little while the others are present (8.3). Qualifying is an open point: with the two trial models it added little once standings and form were in. Report what the final model shows for it.
 
 ### 15. Explainability (XAI)
 
@@ -125,7 +127,7 @@ Sections 11 and 12 can run in parallel; 13–16 need the chosen model from 11–
 
 ## 5. Report
 
-`report/report.md` has sections 1–7 written, with every figure the notebook saves in `report/figures/`. The brief wants every plot in both the notebook and the report: save each new figure with `save_fig('name')` before `plt.show()` and add it to the report. Every Run All overwrites the figures, so the report always shows the latest run; numbers quoted in the text do not update themselves, so re-check them against the notebook after a change. Fill sections 8–10 and export the final version to PDF for the submission.
+`report/report.md` has sections 1–7 written, with every figure the notebook saves in `report/figures/`. The brief wants every plot in both the notebook and the report: save each new figure with `save_fig('name')` before `plt.show()` and add it to the report. Every Run All overwrites the figures, so the report always shows the latest run; numbers quoted in the text do not update themselves, so re-check them against the notebook after a change. Fill sections 8–10. The submitted report must be written in Word or LaTeX and exported as PDF (course staff); `report.md` is the content to move into it.
 
 ## 6. Dependencies
 
