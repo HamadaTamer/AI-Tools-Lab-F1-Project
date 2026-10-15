@@ -74,13 +74,25 @@ Source: Kaggle / Ergast
 
 The dataset contains multiple relational tables covering drivers, constructors, races, circuits, qualifying, results, standings, lap times, pit stops, and other Formula 1 data.
 
+## Repository layout
+
+| Path | What it is |
+| --- | --- |
+| `F1_podium_prediction.ipynb` | the single run-all notebook the whole team works in (sections 1–10 done, 11–16 to do, 17 started) |
+| `team/HANDOFF.md` | what the data sections provide, how to work in the shared notebook, the rules, and what each remaining section must contain |
+| `report/report.md`, `report/figures/` | report draft (sections 1–7) and the figures the notebook saves on every run |
+| `material/` | the milestone description and the F1 introduction |
+| `data/` | the 14 CSVs, downloaded by the notebook on its first run (git-ignored) |
+| `outputs/` | modeling table and feature spec written by the notebook (git-ignored) |
+| `.gitattributes` | tells git to merge `.ipynb` files with nbdime (see below) |
+
 ## Development
 
-The notebook `F1_podium_prediction.ipynb` runs top to bottom (Run All) either **locally on CPU** or on **Kaggle**. It finds the data automatically in `data/` or under `/kaggle/input/`. GitHub is used for version control.
+The notebook `F1_podium_prediction.ipynb` runs top to bottom (Run All, about 75 seconds on a laptop CPU) either **locally** or on **Kaggle**. It looks for the data in `data/`, then under `/kaggle/input/`, and otherwise downloads the latest version of the Kaggle dataset into `data/` (29 January 2025, the author's final update: 1950–2024). Every run overwrites the figures in `report/figures/` and the files in `outputs/`. It has been run with Python 3.14 / pandas 3.0 / scikit-learn 1.9 and with Python 3.11 / pandas 2.2 / scikit-learn 1.5.
 
 ### Run locally (any OS, venv)
 
-Needs Python 3.11–3.13. From the repo root:
+From the repo root:
 
 ```powershell
 # Windows (PowerShell)
@@ -108,20 +120,42 @@ pip install -r requirements.txt
 ```
 </details>
 
-Get the data into `data/` (the folder is git-ignored, so the CSVs are never committed). Either:
+The data needs no manual step: the first Run All downloads it into `data/` (git-ignored, so the CSVs are never committed). To get it by hand instead, any of:
 
-- **Browser:** download the zip from https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020 and extract the CSVs into `data/` (so you have `data/results.csv`, `data/races.csv`, ...), or
-- **Kaggle API** (needs `kaggle.json` from Kaggle → Settings → API, placed in `%USERPROFILE%\.kaggle\`):
+- **Direct download, no Kaggle account needed:**
+  ```bash
+  curl -L -o f1.zip "https://www.kaggle.com/api/v1/datasets/download/rohanrao/formula-1-world-championship-1950-2020"
+  unzip f1.zip -d data
+  ```
+  ```powershell
+  Invoke-WebRequest "https://www.kaggle.com/api/v1/datasets/download/rohanrao/formula-1-world-championship-1950-2020" -OutFile f1.zip
+  Expand-Archive f1.zip data
+  ```
+- **Browser:** download the zip from https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020 and extract the CSVs into `data/` (so you have `data/results.csv`, `data/races.csv`, ...).
+- **Kaggle API** (needs `kaggle.json` from Kaggle → Settings → API):
   ```powershell
   kaggle datasets download -d rohanrao/formula-1-world-championship-1950-2020 -p data --unzip
   ```
 
-Then open the notebook in VS Code (select the `.venv` kernel) or run `jupyter lab`, and **Run All**. Outputs (tables, CSVs, the modeling table) are written to `outputs/`.
+Then open the notebook in VS Code (select the `.venv` kernel) or run `jupyter lab`, and **Run All**. The notebook writes the modeling table to `outputs/` and the report figures to `report/figures/`.
 
 ### Run on Kaggle
 
-Upload the notebook, attach the dataset *Formula 1 World Championship (1950 - 2024)*, add `statsmodels` if it is missing, and Run All.
+Upload the notebook and attach the dataset *Formula 1 World Championship (1950 - 2024)* (or turn on Internet in the notebook settings and it downloads the data itself). Either *Save & Run All*, or upload the notebook already executed locally and use *Save Version → Quick Save* to keep its outputs exactly as they are. The gradient-boosting numbers can differ slightly between scikit-learn versions (the notebook explains this in section 7.1); every decision stays the same. On Kaggle the figures and the modeling table go to the notebook's Output tab, not to this repository.
+
+### Working on the remaining sections
+
+The whole team works in the one notebook, each person in their own section, on their own branch. Once per clone, after installing the requirements:
+
+```bash
+git-nbmergedriver config --enable
+```
+
+This makes git merge notebooks cell by cell with nbdime (the committed `.gitattributes` points `.ipynb` merges to it; merge with the venv activated). Without it, two branches that both ran the notebook conflict on almost every cell. The full workflow, the section owners and what each section must contain are in `team/HANDOFF.md`.
 
 ## Status
 
-Milestone 1 — In Progress
+Milestone 1, deadline 18 October 2026.
+
+- Done: data audit and cleaning, EDA before and after cleaning, the three data-engineering questions, feature engineering and selection, split, preprocessing and preprocessing-order experiments, report sections 1–7.
+- To do: models and baseline, shallow neural network, model comparison, feature-group ablation, XAI, inference function, report sections 8–10 and PDF, Kaggle and GitHub links.
