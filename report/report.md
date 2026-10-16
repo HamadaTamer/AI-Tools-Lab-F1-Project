@@ -39,7 +39,7 @@ After cleaning, the podium share in every season follows `3 / starters per race`
 Other findings that shape the later steps:
 
 - **The grid is the strongest signal, and it drifts.** A pole position converted to a podium 53% of the time in 1950–69 and 81% in 2014–24 (§4.2). Per technical era, the grid's ROC-AUC rose from 0.84–0.86 (1958–1988) to 0.89–0.93 (since 1989); 2011–2013, when DRS arrived, is slightly less grid-dominated than 2009–2010 on two of three measures.
-- **Qualifying coverage is patchy.** There is no qualifying data before 1994, it is complete in 1994–95, covers only 6–59% of starters in 1996–2002, and is complete from 2003 on (§4.3).
+- **Qualifying coverage is patchy.** There is no qualifying data before 1994; it covers 94% of starters in 1994, all in 1995, only 6–59% in 1996–2002, and all from 2003 on (§4.3).
 - **Reliability changed.** About half of the starters finished a race until the 1990s, against 86% in the 2020s (§4.4).
 
 ![Podium rate by grid position, per era](figures/podium_by_grid.png)
@@ -78,7 +78,7 @@ Other findings that shape the later steps:
 
 - **2014–2021:** Caterham 23.5% of starts (8/34, its only season), Lotus F1 18.7% (14/75), Toro Rosso 16.5% (40/242); McLaren and Renault 13.5%. The top three's intervals overlap (12–40%, 12–29%, 12–22%), so they cannot be strictly ordered. Mercedes was the most reliable of the teams present in all eight seasons (4.1%).
 - **2022–2024:** Alfa Romeo 12.5% (11/88), Alpine 11.0% (15/136), AlphaTauri 8.0% (7/88); most teams are between 2% and 6%.
-- Mechanical retirements fell from 9.5% to 5.8% of starts. Counting the unclear statuses as mechanical leaves the leaders unchanged.
+- Mechanical retirements fell from 9.5% to 5.8% of starts. Counting the unclear statuses as mechanical leaves the 2014–21 top three unchanged; in 2022–24 the top two stay and RB replaces AlphaTauri in third.
 - Renamed teams count separately (e.g. Alfa Romeo 2022–23 and Sauber 2024 are the same team: 8.8% together).
 
 ![Q3](figures/q3_mechanical_rate.png)
@@ -90,7 +90,7 @@ Every candidate column was screened against the cutoff (§6.1): race results, po
 28 candidate features in 11 groups were built (§6.2), including three groups motivated by the F1 introduction and question 3: the driver against the team-mate in the same car, earlier results at the same circuit, and reliability (the driver's recent retirements, the team's recent mechanical failures). Selection used the training seasons only: the single-feature relationship with the podium (§8.1), redundancy (§8.2), and trials (§8.3):
 
 - **Representations:** championship position beats raw points (−0.026, the points system changed) and ties with points share; the Q1 gap beats the gap from each driver's best session (−0.008); a 3-race form window is never beaten and overlaps least with standings and career rate.
-- **Forward selection,** in an order computed from the single-feature evidence, with a group kept only if it beats the measured noise level for at least one of the two trial models.
+- **Forward selection,** in an order computed from the single-feature evidence, with a group kept only if, for at least one of the two trial models, it beats the measured noise level and is better in at least 2 of the 3 windows.
 - **Driver form vs constructor form:** they tie on the single-feature evidence and in a head-to-head; the order-free check decides: removing driver form from all groups costs the tree model 0.014 (beyond noise), removing constructor form costs nothing, because the team's strength is already in `con_standing`.
 - **Order-free check:** removing one group at a time from all groups shows that the three new groups, experience, field size and home make the models *worse*; all eleven groups together score below the four selected ones.
 
@@ -113,11 +113,11 @@ Known issues of these boundaries and how they are handled (§7): the validation 
 
 ## 6. Missing values and preprocessing
 
-**Missing values (§3.6, §9.1).** Of the 30 columns with missing values, only `qualifying.q1` feeds a feature; the others are post-race or schedule columns that are never used. What matters are missing *rows*: no qualifying result before 1994 and for 41–94% of starters in 1996–2002, no constructor standings before 1958, no standings at round 1 or in a driver's or team's first race of a season, no form before a driver's first start. In validation and test almost nothing is missing.
+**Missing values (§3.6, §9.1).** Of the 30 columns with missing values, only `qualifying.q1` feeds a selected feature; `q2`/`q3` fed only a rejected candidate (the best-session gap) and `results.number` only identifies shared cars; the rest are post-race, schedule or identifier columns that are never used. What matters are missing *rows*: no qualifying result before 1994 and for 41–94% of starters in 1996–2002, no constructor standings before 1958, no standings at round 1 or in a driver's or team's first race of a season, no form before a driver's first start. In validation and test almost nothing is missing.
 
 ![Missing values in the selected features, per season](figures/feature_missingness.png)
 
-Filling, fitted on the training rows only: the median plus a 0/1 indicator per feature. It beats median only, mean only and filling qualifying with the grid slot; a model-based (iterative) imputer ties with it; dropping training rows with a missing value is clearly worse (−0.014: only 7,384 of 22,589 training rows are complete). Then standard scaling: min-max, robust and no scaling tie for logistic regression, and standard scaling is kept for the regularization penalty and for the neural network. Clipping or log-transforming the qualifying gap and the choice of pit-lane encoding made no difference beyond the noise level.
+Filling, fitted on the training rows only: the median plus a 0/1 indicator per feature. The indicators matter (without them −0.007 in every window); median vs mean is a tie (−0.0001 with indicators), and the median is kept because the long tails do not pull it; a model-based (iterative) imputer also ties; filling qualifying with the grid slot is worse (−0.009); dropping training rows with a missing value is clearly worse (−0.014: only 7,384 of 22,589 training rows are complete). Then standard scaling: min-max, robust and no scaling tie for logistic regression, and standard scaling is kept for the regularization penalty and for the neural network. Clipping or log-transforming the qualifying gap and the choice of pit-lane encoding made no difference beyond the noise level.
 
 ![Effect of preprocessing](figures/preprocessing_effect.png)
 

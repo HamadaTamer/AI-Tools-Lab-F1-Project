@@ -4,7 +4,7 @@ Sections 1–10 of `F1_podium_prediction.ipynb` are done: audit, cleaning, EDA, 
 
 ## 1. What you get
 
-After Run All reaches the end of section 10 (about 75 seconds), these names exist:
+After Run All reaches the end of section 10 (about 2 minutes), these names exist:
 
 | Name | What it is |
 | --- | --- |

@@ -88,7 +88,7 @@ The dataset contains multiple relational tables covering drivers, constructors, 
 
 ## Development
 
-The notebook `F1_podium_prediction.ipynb` runs top to bottom (Run All, about 75 seconds on a laptop CPU) either **locally** or on **Kaggle**. It looks for the data in `data/`, then under `/kaggle/input/`, and otherwise downloads the latest version of the Kaggle dataset into `data/` (29 January 2025, the author's final update: 1950–2024). Every run overwrites the figures in `report/figures/` and the files in `outputs/`. It has been run with Python 3.14 / pandas 3.0 / scikit-learn 1.9 and with Python 3.11 / pandas 2.2 / scikit-learn 1.5.
+The notebook `F1_podium_prediction.ipynb` runs top to bottom (Run All, about 2 minutes on a laptop CPU, also with only 4 cores) either **locally** or on **Kaggle**. It looks for the data in `data/`, then under `/kaggle/input/`, and otherwise downloads the latest version of the Kaggle dataset into `data/` (29 January 2025, the author's final update: 1950–2024). Every run overwrites the figures in `report/figures/` and the files in `outputs/`. It has been run with Python 3.14 / pandas 3.0 / scikit-learn 1.9 and with Python 3.11 / pandas 2.2 / scikit-learn 1.5.
 
 ### Run locally (any OS, venv)
 
