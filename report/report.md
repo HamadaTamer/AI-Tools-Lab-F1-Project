@@ -121,6 +121,8 @@ Filling, fitted on the training rows only: the median plus a 0/1 indicator per f
 
 ![Effect of preprocessing](figures/preprocessing_effect.png)
 
+*Top: the observed training values. Bottom: the same values after imputation and scaling, with the same bins, so the shapes are unchanged. Every filled value gets the scaled training median (orange line; the legend gives the number of filled rows).*
+
 **Preprocessing-order experiments (§9.3)**
 
 | Experiment | Orders compared | Result | Decision |
