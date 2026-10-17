@@ -5,6 +5,7 @@ matplotlib>=3.8
 seaborn>=0.13
 scipy>=1.11
 scikit-learn>=1.4
+shap>=0.50
 statsmodels>=0.14
 jinja2>=3.1          # needed for pandas table styling (df.style)
 jupyterlab>=4.0
