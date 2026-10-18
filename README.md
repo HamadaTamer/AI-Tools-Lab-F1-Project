@@ -1,6 +1,8 @@
 # Formula 1 Podium Prediction
 
-AI Tools Lab, Milestone 1. For every driver in every Formula 1 race we predict whether the driver finishes on the podium (`positionOrder <= 3`), using only what is known after qualifying and before the start. The project covers the whole pipeline: auditing and cleaning the 14 relational tables of the Kaggle/Ergast dataset, three data-engineering questions, a leakage-safe driver–race modeling table, feature selection by experiment, preprocessing, three models (logistic regression, random forest, shallow neural network), a feature-group ablation, explainability (permutation importance, SHAP) and an inference function.
+AI Tools Lab, Milestone 1, Team 97: Ahmed Tamer Mohamed Hany Saleh Elmeazawy (58-14045), Youssef Mohamed Mohamed Elkhodary (58-18247), Omar Gamaleldin Mohamed Abdelbaky (58-13583), Omar Hisham Abdelrahman Mahrous Abdelrahman (58-25441).
+
+For every driver in every Formula 1 race we predict whether the driver finishes on the podium (`positionOrder <= 3`), using only what is known after qualifying and before the start. The project covers the whole pipeline: auditing and cleaning the 14 relational tables of the Kaggle/Ergast dataset, three data-engineering questions, a leakage-safe driver–race modeling table, feature selection by experiment, preprocessing, three models (logistic regression, random forest, shallow neural network), a feature-group ablation, explainability (permutation importance, SHAP) and an inference function.
 
 - **Notebook:** [`F1_podium_prediction.ipynb`](F1_podium_prediction.ipynb), one notebook that runs top to bottom.
 - **Report:** [`report/report.pdf`](report/report.pdf) (source: `report/report.tex`).
