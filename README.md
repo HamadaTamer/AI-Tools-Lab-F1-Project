@@ -1,161 +1,98 @@
-# AI Tools Lab — Formula 1 Podium Prediction
+# Formula 1 Podium Prediction
 
-This repository contains our **AI Tools Lab project** for predicting Formula 1 podium finishes using historical race-weekend data.
+AI Tools Lab, Milestone 1. For every driver in every Formula 1 race we predict whether the driver finishes on the podium (`positionOrder <= 3`), using only what is known after qualifying and before the start. The project covers the whole pipeline: auditing and cleaning the 14 relational tables of the Kaggle/Ergast dataset, three data-engineering questions, a leakage-safe driver–race modeling table, feature selection by experiment, preprocessing, three models (logistic regression, random forest, shallow neural network), a feature-group ablation, explainability (permutation importance, SHAP) and an inference function.
 
-The goal is to build a complete data-engineering and machine-learning pipeline that predicts whether a driver will finish on the podium using only information available **after qualifying and before the race starts**.
+- **Notebook:** [`F1_podium_prediction.ipynb`](F1_podium_prediction.ipynb), one notebook that runs top to bottom.
+- **Report:** [`report/report.pdf`](report/report.pdf) (source: `report/report.tex`).
 
-## Project Overview
+## Results
 
-The project uses the Formula 1 World Championship dataset from Kaggle / Ergast, covering historical Formula 1 data from 1950–2024.
+Final models on the test seasons 2022–2024 (68 races, never used for any choice). Thresholds and hyperparameters were chosen on the validation seasons 2020–2021.
 
-The prediction unit is:
+| Model | ROC-AUC | PR-AUC | F1 | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Shallow neural network (2 hidden layers) | **0.941** | **0.714** | **0.698** | **0.638** | 0.770 |
+| Logistic regression (baseline) | 0.933 | 0.701 | 0.690 | 0.602 | 0.809 |
+| Random forest | 0.935 | 0.696 | 0.678 | 0.580 | **0.814** |
 
-**One driver entering one race**
+PR-AUC is the primary metric (podiums are 13–15% of rows), ROC-AUC the secondary one. A random ranking scores about 0.15 PR-AUC on these seasons.
 
-The target is:
+Data-engineering questions, in short:
 
-**Podium finish = finishing position ≤ 3**
+1. **Front-row conversion.** Since 2014 Suzuka (89%), Yas Marina (86%) and Monaco (85%) turn a front-row start into a podium most often. The circuit ranking before and after 2014 is unrelated (rank correlation −0.03), and front-row starts convert far more often now (56% → 76%).
+2. **Home advantage.** None once the starting position is controlled for: pooled odds ratio 0.95 (95% CI 0.80–1.13).
+3. **Mechanical retirements.** Highest rates in 2014–2021: Caterham, Lotus F1, Toro Rosso; in 2022–2024: Alfa Romeo, Alpine, AlphaTauri. Overall the rate fell from 9.5% to 5.8% of starts.
 
-A key requirement is avoiding **data leakage**. Information only known after the race, such as current-race results, points, race status, laps, and pit stops, cannot be used as prediction features.
+## The notebook
 
-## Main Project Areas
+| Section | Content |
+| --- | --- |
+| 1 | setup: locates or downloads the data, fixes the random seed |
+| 2 | audit of the raw tables before any change: column profiles, missing-value markers, categories, duration formats |
+| 3 | cleaning: typing, keys and validity rules, points reconciliation, shared drives (one row per driver and race), who counts as a starter, missing-values map |
+| 4 | EDA after cleaning |
+| 5 | the three data-engineering questions, each with its figure and robustness checks |
+| 6 | feature engineering: leakage screen, 28 candidate features, automatic leakage checks |
+| 7 | split by season and how data decisions are evaluated (three validation windows, measured noise level) |
+| 8 | feature selection by experiment |
+| 9 | preprocessing trials, the final pipeline and its effect, preprocessing-order experiments |
+| 10 | the modeling table and evaluation helpers |
+| 11–13 | logistic regression, random forest, shallow neural network, comparison on train, validation and test |
+| 14 | feature-group ablation |
+| 15 | explainability: permutation importance, SHAP (global and local) |
+| 16 | inference function, shown on a complete and a partially missing record |
+| 17 | assumptions and limitations |
 
-### 1. Data Cleaning & Analysis
-- Exploratory Data Analysis
-- Missing-value and sentinel handling
-- Data type conversion
-- Duplicate driver-race handling
-- Primary and foreign key validation
-- Required data-engineering questions
-- Visualizations and interpretation
+Every run writes the report figures to `report/figures/` and the modeling table and feature list to `outputs/`.
 
-### 2. Feature Engineering & Selection
-- Construction of the driver-race modeling table
-- Leakage-safe historical features
-- Driver and constructor form features
-- Qualifying and grid features
-- Feature selection
-- Preprocessing
-- Train / validation / test splitting
+## Running it
 
-### 3. Statistical Models
-- Statistical and traditional machine-learning models
-- Hyperparameter tuning
-- Model comparison
-- Feature-group ablation
-- Performance evaluation
+### On Kaggle
 
-### 4. Neural Networks
-- Shallow feed-forward neural network
-- Architecture and hyperparameter experiments
-- Training and validation
-- Comparison against statistical models
+1. Create a new notebook and import `F1_podium_prediction.ipynb` (File → Import Notebook).
+2. Add the dataset *Formula 1 World Championship (1950 - 2024)* by rohanrao (Add Input), or turn Internet on in the notebook settings; the notebook then downloads the data itself.
+3. Run All. It needs nothing beyond Kaggle's standard image (pandas, scikit-learn, statsmodels, PyTorch, SHAP) and takes about 4 minutes on a 4-core CPU session.
 
-### 5. Explainable AI (XAI)
-- Permutation importance
-- SHAP
-- Local prediction explanations using SHAP and/or LIME
-- Interpretation of model behavior
+The committed notebook already contains the outputs the report quotes. A rerun with other library versions gives the same data sections and the same logistic regression, but the random forest, the gradient-boosting trials and the neural network can move by about 0.01 PR-AUC (the notebook says so in sections 7.1, 11.2 and 12); every conclusion stays the same. To publish exactly the outputs of the report, import the executed notebook and save the version without rerunning it (Save Version → Quick Save).
 
-## Evaluation
+### Locally
 
-Models will be evaluated using:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+jupyter lab                         # or open the notebook in VS Code with the .venv kernel
+```
 
-- ROC-AUC
-- PR-AUC
-- F1 Score
+Run All takes about 5 minutes on a laptop CPU. The first run downloads the dataset into `data/` (git-ignored). To get it by hand instead, download the zip from the [dataset page](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) and extract the CSVs into `data/`, or:
 
-Model selection, hyperparameter tuning, and threshold selection will use training and validation data only. The test set will remain unseen until final evaluation.
+```bash
+curl -L -o f1.zip "https://www.kaggle.com/api/v1/datasets/download/rohanrao/formula-1-world-championship-1950-2020"
+unzip f1.zip -d data
+```
 
-## Dataset
+The notebook has been run top to bottom with Python 3.14 (pandas 3.0, scikit-learn 1.9, PyTorch 2.14, SHAP 0.54) and, from an empty folder that downloads the data, with Python 3.11 (pandas 2.2, scikit-learn 1.2, PyTorch 2.5, SHAP 0.44).
 
-**Formula 1 World Championship (1950–2024)**  
-Source: Kaggle / Ergast
+### The report
 
-The dataset contains multiple relational tables covering drivers, constructors, races, circuits, qualifying, results, standings, lap times, pit stops, and other Formula 1 data.
+```bash
+cd report
+pdflatex report.tex && pdflatex report.tex
+```
+
+The report reads its figures from `report/figures/`, which every Run All refreshes. The numbers in its text are written by hand, so check them against the notebook after any change.
 
 ## Repository layout
 
-| Path | What it is |
+| Path | Content |
 | --- | --- |
-| `F1_podium_prediction.ipynb` | the single run-all notebook the whole team works in (sections 1–10 done, 11–16 to do, 17 started) |
-| `team/HANDOFF.md` | what the data sections provide, how to work in the shared notebook, the rules, and what each remaining section must contain |
-| `report/report.md`, `report/figures/` | report draft (sections 1–7) and the figures the notebook saves on every run |
-| `material/` | the milestone description and the F1 introduction |
-| `data/` | the 14 CSVs, downloaded by the notebook on its first run (git-ignored) |
-| `outputs/` | modeling table and feature spec written by the notebook (git-ignored) |
-| `.gitattributes` | tells git to merge `.ipynb` files with nbdime (see below) |
+| `F1_podium_prediction.ipynb` | the notebook |
+| `report/` | the report (LaTeX source and PDF) and the figures the notebook saves |
+| `material/` | the milestone description and the F1 introduction from the course |
+| `requirements.txt` | Python packages |
+| `data/` | the 14 CSVs, downloaded on the first run (git-ignored) |
+| `outputs/` | modeling table and feature list written by the notebook (git-ignored) |
 
-## Development
+## Data
 
-The notebook `F1_podium_prediction.ipynb` runs top to bottom (Run All, about 2 minutes on a laptop CPU, also with only 4 cores) either **locally** or on **Kaggle**. It looks for the data in `data/`, then under `/kaggle/input/`, and otherwise downloads the latest version of the Kaggle dataset into `data/` (29 January 2025, the author's final update: 1950–2024). Every run overwrites the figures in `report/figures/` and the files in `outputs/`. It has been run with Python 3.14 / pandas 3.0 / scikit-learn 1.9 and with Python 3.11 / pandas 2.2 / scikit-learn 1.5.
-
-### Run locally (any OS, venv)
-
-From the repo root:
-
-```powershell
-# Windows (PowerShell)
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-```bash
-# macOS / Linux
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-The `.venv/` folder is git-ignored (virtual environments aren't portable), so each person creates their own with the commands above. In VS Code, pick the `.venv` interpreter as the notebook kernel (Select Kernel → Python Environments → `.venv`).
-
-<details>
-<summary>Alternative: conda</summary>
-
-```powershell
-conda create -n f1 python=3.11 -y
-conda activate f1
-pip install -r requirements.txt
-```
-</details>
-
-The data needs no manual step: the first Run All downloads it into `data/` (git-ignored, so the CSVs are never committed). To get it by hand instead, any of:
-
-- **Direct download, no Kaggle account needed:**
-  ```bash
-  curl -L -o f1.zip "https://www.kaggle.com/api/v1/datasets/download/rohanrao/formula-1-world-championship-1950-2020"
-  unzip f1.zip -d data
-  ```
-  ```powershell
-  Invoke-WebRequest "https://www.kaggle.com/api/v1/datasets/download/rohanrao/formula-1-world-championship-1950-2020" -OutFile f1.zip
-  Expand-Archive f1.zip data
-  ```
-- **Browser:** download the zip from https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020 and extract the CSVs into `data/` (so you have `data/results.csv`, `data/races.csv`, ...).
-- **Kaggle API** (needs `kaggle.json` from Kaggle → Settings → API):
-  ```powershell
-  kaggle datasets download -d rohanrao/formula-1-world-championship-1950-2020 -p data --unzip
-  ```
-
-Then open the notebook in VS Code (select the `.venv` kernel) or run `jupyter lab`, and **Run All**. The notebook writes the modeling table to `outputs/` and the report figures to `report/figures/`.
-
-### Run on Kaggle
-
-Upload the notebook and attach the dataset *Formula 1 World Championship (1950 - 2024)* (or turn on Internet in the notebook settings and it downloads the data itself). Either *Save & Run All*, or upload the notebook already executed locally and use *Save Version → Quick Save* to keep its outputs exactly as they are. The gradient-boosting numbers can differ slightly between scikit-learn versions (the notebook explains this in section 7.1); every decision stays the same. On Kaggle the figures and the modeling table go to the notebook's Output tab, not to this repository.
-
-### Working on the remaining sections
-
-The whole team works in the one notebook, each person in their own section, on their own branch. Once per clone, after installing the requirements:
-
-```bash
-git-nbmergedriver config --enable
-```
-
-This makes git merge notebooks cell by cell with nbdime (the committed `.gitattributes` points `.ipynb` merges to it; merge with the venv activated). Without it, two branches that both ran the notebook conflict on almost every cell. The full workflow, the section owners and what each section must contain are in `team/HANDOFF.md`.
-
-## Status
-
-Milestone 1, deadline 18 October 2026.
-
-- Done: data audit and cleaning, EDA before and after cleaning, the three data-engineering questions, feature engineering and selection, split, preprocessing and preprocessing-order experiments, report sections 1–7.
-- To do: models and baseline, shallow neural network, model comparison, feature-group ablation, XAI, inference function, report sections 8–10 and PDF, Kaggle and GitHub links.
+[Formula 1 World Championship (1950–2024)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) on Kaggle, built from the Ergast API: 14 tables, 1,125 races, 26,759 result rows. The notebook uses the dataset's final version (29 January 2025).
