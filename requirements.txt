@@ -12,3 +12,4 @@ jinja2>=3.1          # needed for pandas table styling (df.style)
 jupyterlab>=4.0
 ipykernel>=6.0
 kaggle>=1.6          # optional: download the dataset from the command line
+neo4j>=5.0          # Milestone 2: Neo4j Python driver
