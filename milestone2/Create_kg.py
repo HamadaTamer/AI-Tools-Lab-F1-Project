@@ -19,14 +19,13 @@ import os
 from datetime import date
 
 from neo4j import GraphDatabase
+from neo4j.exceptions import Neo4jError
 
 # config.txt lives in the same directory as this script.
 HERE = os.path.dirname(os.path.abspath(__file__))
 # The deliverable requires reading the CSVs from the script's own directory (that is how the
-# grader runs it). Assumption: if they are not there, we are running inside this repo, so fall
-# back to the backup copy in ./data, then to the repo's dataset in ../data.
-CSV_DIR = next((d for d in (HERE, os.path.join(HERE, "data"), os.path.join(HERE, "..", "data"))
-                if os.path.exists(os.path.join(d, "drivers.csv"))), HERE)
+# grader runs it), so the CSV files must sit next to this script.
+CSV_DIR = HERE
 BATCH_SIZE = 1000  # rows sent per UNWIND transaction; keeps each transaction small
 
 
@@ -196,9 +195,14 @@ def main():
         driver.verify_connectivity()
 
         for label in LOAD_ORDER:
-            driver.execute_query(
-                f"CREATE CONSTRAINT IF NOT EXISTS FOR (n:{label}) REQUIRE n.{KEYS[label]} IS UNIQUE",
-                database_=database)
+            try:
+                driver.execute_query(
+                    f"CREATE CONSTRAINT IF NOT EXISTS FOR (n:{label}) REQUIRE n.{KEYS[label]} IS UNIQUE",
+                    database_=database)
+            except Neo4jError as e:
+                # E.g. an index already exists on this property. MERGE still prevents
+                # duplicates without the constraint, so carry on with the load.
+                print(f"Could not create constraint on {label}.{KEYS[label]}: {e.message}")
 
         for label in LOAD_ORDER:
             rows = load_rows(label)

@@ -3,7 +3,7 @@ MATCH (res:Result)-[:FOR_RACE]->(:Race)-[:IN_SEASON]->(:Season {year: 2021})
 MATCH (res)-[:BY_DRIVER]->(d:Driver)
 WITH d, sum(res.points) AS Points, sum(CASE WHEN res.position = 1 THEN 1 ELSE 0 END) AS Wins
 RETURN d.forename + ' ' + d.surname AS Driver, Points, Wins
-ORDER BY Points DESC, Wins DESC
+ORDER BY Points DESC, Wins DESC, Driver ASC;
 
 //2. Query 2
 MATCH (res:Result)-[:FOR_RACE]->(ra:Race)
@@ -13,7 +13,7 @@ WITH c, count(res) AS Entries,
      sum(CASE WHEN s.status = 'Finished' OR s.status STARTS WITH '+' THEN 1 ELSE 0 END) AS Classified
 WHERE Entries >= 100
 RETURN c.constructor_name AS Constructor, Entries, Classified, toFloat(Classified) / Entries AS Reliability
-ORDER BY Reliability DESC
+ORDER BY Reliability DESC, Constructor ASC;
 
 //3. Query 3
 MATCH (:Driver {driverId: 1})<-[:BY_DRIVER]-(h:Result)-[:FOR_RACE]->(ra:Race)<-[:FOR_RACE]-(b:Result)-[:BY_DRIVER]->(:Driver {driverId: 822})
@@ -21,7 +21,7 @@ MATCH (h)-[:FOR_CONSTRUCTOR]->(c:Constructor)<-[:FOR_CONSTRUCTOR]-(b)
 WITH c, count(DISTINCT ra) AS Shared_Races,
      sum(CASE WHEN h.positionOrder < b.positionOrder THEN 1 ELSE 0 END) AS Hamilton_Ahead,
      sum(CASE WHEN b.positionOrder < h.positionOrder THEN 1 ELSE 0 END) AS Bottas_Ahead
-RETURN c.constructor_name AS Constructor, Shared_Races, Hamilton_Ahead, Bottas_Ahead
+RETURN c.constructor_name AS Constructor, Shared_Races, Hamilton_Ahead, Bottas_Ahead;
 
 //4. Query 4
 MATCH (res:Result)-[:FOR_RACE]->(ra:Race)-[:AT_CIRCUIT]->(:Circuit {circuitId: 6})
@@ -29,11 +29,11 @@ WHERE ra.date < date('2020-01-01')
 MATCH (res)-[:HAS_STATUS]->(s:Status)
 WHERE NOT s.status IN ['Did not qualify', 'Did not prequalify', 'Withdrew']
 MATCH (res)-[:BY_DRIVER]->(d:Driver)
-WITH d, count(DISTINCT ra) AS Starts, avg(res.positionOrder) AS Avg_Finish,
+WITH d, count(DISTINCT ra) AS Starts, toFloat(sum(res.positionOrder)) / count(res) AS Avg_Finish,
      sum(CASE WHEN res.position = 1 THEN 1 ELSE 0 END) AS Wins
 WHERE Starts >= 5
 RETURN d.forename + ' ' + d.surname AS Driver, Starts, Avg_Finish, Wins
-ORDER BY Avg_Finish ASC, Wins DESC
+ORDER BY Avg_Finish ASC, Wins DESC, Driver ASC;
 
 //5. Query 5
 MATCH (res:Result)-[:FOR_RACE]->(ra:Race)
@@ -47,4 +47,4 @@ WHERE size(seasons) = 2
 WITH d, [x IN seasons WHERE x.year = 2020][0].primaryId AS primary2020,
         [x IN seasons WHERE x.year = 2021][0].primaryId AS primary2021
 WHERE primary2020 <> primary2021
-RETURN count(d) AS Drivers_Changed, collect(d.forename + ' ' + d.surname) AS Drivers
+RETURN count(d) AS Drivers_Changed, collect(d.forename + ' ' + d.surname) AS Drivers;
