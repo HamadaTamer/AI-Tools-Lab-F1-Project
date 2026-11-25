@@ -1,0 +1,13 @@
+intent,driver_season_stats,driver_circuit_record,constructor_stats,head_to_head,race_result,circuit_info,qualifying_record,grid_gains,pit_stops,season_standings,podium_prediction,out_of_scope,rephrase
+driver_season_stats,7,0,0,0,0,0,0,0,0,0,0,0,0
+driver_circuit_record,1,7,0,0,0,0,0,0,0,0,0,0,0
+constructor_stats,1,0,6,0,1,0,0,0,0,0,0,0,0
+head_to_head,0,0,1,7,0,0,0,0,0,0,0,0,0
+race_result,0,0,0,0,8,0,0,0,0,0,0,0,0
+circuit_info,0,0,0,0,0,8,0,0,0,0,0,0,0
+qualifying_record,0,0,0,0,0,0,8,0,0,0,0,0,0
+grid_gains,0,0,0,0,0,0,0,7,0,0,0,0,0
+pit_stops,0,0,0,0,0,0,0,0,7,0,0,0,0
+season_standings,0,0,0,0,0,0,0,0,0,7,0,0,0
+podium_prediction,0,0,0,0,0,0,0,0,0,0,8,0,0
+out_of_scope,0,0,0,0,0,1,0,0,0,0,0,8,1

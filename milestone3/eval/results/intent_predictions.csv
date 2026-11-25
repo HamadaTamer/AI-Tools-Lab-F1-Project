@@ -1,0 +1,95 @@
+question,intent,rule,embedding,hybrid_rule_first,hybrid_embedding_first,emb_score,emb_margin
+How many victories did Button take in 2009?,driver_season_stats,driver_season_stats,driver_season_stats,driver_season_stats,driver_season_stats,0.633,0.051
+What was Massa's points total in 2008?,driver_season_stats,driver_season_stats,rephrase,driver_season_stats,driver_season_stats,0.621,0.002
+Tell me how many podiums Webber collected between 2010 and 2013,driver_season_stats,driver_season_stats,driver_season_stats,driver_season_stats,driver_season_stats,0.784,0.058
+How many races did Raikkonen win in his whole career?,driver_season_stats,driver_season_stats,driver_season_stats,driver_season_stats,driver_season_stats,0.835,0.047
+What was Gasly's average finish in 2019?,driver_season_stats,driver_season_stats,rephrase,driver_season_stats,driver_season_stats,0.611,0.001
+How many times did Rosberg win at Monaco?,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,0.817,0.034
+Has Ricciardo ever finished on the podium at the Hungaroring?,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,0.77,0.013
+Tell me Norris's results around Suzuka after 2019,driver_circuit_record,driver_circuit_record,podium_prediction,driver_circuit_record,podium_prediction,0.644,0.012
+What is Schumacher's best result at Magny-Cours?,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,0.7,0.009
+How did Perez do at the Baku City Circuit?,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,driver_circuit_record,0.657,0.052
+How many wins does Vettel have at Singapore?,driver_circuit_record,driver_circuit_record,driver_season_stats,driver_circuit_record,driver_season_stats,0.828,0.051
+What was the points total of Ferrari in 2004?,constructor_stats,constructor_stats,constructor_stats,constructor_stats,constructor_stats,0.818,0.131
+How dependable was Renault's car from 2005 to 2008?,constructor_stats,constructor_stats,constructor_stats,constructor_stats,constructor_stats,0.704,0.212
+How many Grand Prix victories did Brawn get in 2009?,constructor_stats,race_result,driver_season_stats,race_result,driver_season_stats,0.776,0.036
+Did McLaren finish many races in 2015 or did they retire often?,constructor_stats,constructor_stats,constructor_stats,constructor_stats,constructor_stats,0.75,0.15
+What did Sauber achieve in terms of points since 2010?,constructor_stats,constructor_stats,constructor_stats,constructor_stats,constructor_stats,0.696,0.101
+How many wins did Red Bull get in 2013?,constructor_stats,constructor_stats,constructor_stats,constructor_stats,constructor_stats,0.84,0.192
+Did Alonso out-finish Hamilton at McLaren in 2007?,head_to_head,head_to_head,head_to_head,head_to_head,head_to_head,0.733,0.03
+Piquet or Mansell: who came home in front more often?,head_to_head,head_to_head,rephrase,head_to_head,head_to_head,0.443,0.127
+How often did Rosberg beat Schumacher as teammates at Mercedes?,head_to_head,head_to_head,rephrase,head_to_head,head_to_head,0.66,0.001
+Räikkönen vs Massa at Ferrari,head_to_head,head_to_head,head_to_head,head_to_head,head_to_head,0.616,0.139
+Verstappen against Ricciardo at Red Bull in 2016 - who was ahead more races?,head_to_head,head_to_head,head_to_head,head_to_head,head_to_head,0.682,0.085
+Which of Barrichello and Schumacher finished higher more often?,head_to_head,head_to_head,qualifying_record,head_to_head,qualifying_record,0.71,0.01
+Who was victorious at the 2005 Spanish Grand Prix?,race_result,race_result,race_result,race_result,race_result,0.742,0.035
+Give me the top three of the 2014 Abu Dhabi GP,race_result,race_result,race_result,race_result,race_result,0.64,0.047
+Which driver won the 2003 Japanese Grand Prix?,race_result,race_result,race_result,race_result,race_result,0.737,0.094
+Who crossed the line first at the 2009 Chinese GP?,race_result,race_result,race_result,race_result,race_result,0.724,0.111
+Who stood on the podium in the 2018 Azerbaijan Grand Prix?,race_result,race_result,race_result,race_result,race_result,0.689,0.055
+Who claimed victory in the 2007 Hungarian Grand Prix?,race_result,race_result,race_result,race_result,race_result,0.696,0.043
+Which country is the Zandvoort track in?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.536,0.057
+How often has the Hungaroring hosted a Grand Prix?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.842,0.209
+In what year did Sepang first host a race?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.663,0.181
+What city is Albert Park near?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.504,0.065
+Give me some facts on the Yas Marina circuit,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.776,0.465
+When did Monaco last hold a Grand Prix?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.779,0.12
+In how many races did Prost start from pole?,qualifying_record,qualifying_record,qualifying_record,qualifying_record,qualifying_record,0.719,0.066
+How often did Hamilton make Q3 between 2015 and 2018?,qualifying_record,qualifying_record,qualifying_record,qualifying_record,qualifying_record,0.738,0.096
+What was Ricciardo's mean starting position in 2014?,qualifying_record,qualifying_record,driver_season_stats,qualifying_record,driver_season_stats,0.679,0.016
+How many times did Mansell qualify on the front row?,qualifying_record,qualifying_record,driver_circuit_record,qualifying_record,driver_circuit_record,0.69,0.056
+Count Rosberg's pole positions in 2016,qualifying_record,qualifying_record,qualifying_record,qualifying_record,qualifying_record,0.655,0.075
+Did Raikkonen often qualify in the top three in 2005?,qualifying_record,qualifying_record,qualifying_record,qualifying_record,qualifying_record,0.73,0.073
+Which driver went up the most places from his starting slot at the 2008 Chinese Grand Prix?,grid_gains,grid_gains,grid_gains,grid_gains,grid_gains,0.735,0.055
+Who was the biggest mover from grid to chequered flag at Imola in 2005?,grid_gains,grid_gains,grid_gains,grid_gains,grid_gains,0.596,0.091
+Who gained the most positions at the 2017 Azerbaijan GP?,grid_gains,grid_gains,grid_gains,grid_gains,grid_gains,0.706,0.095
+Top five drivers by places gained from the grid in the 2010 Korean Grand Prix,grid_gains,grid_gains,race_result,grid_gains,race_result,0.662,0.017
+Which racer overtook the most rivals at Hockenheim in 2018?,grid_gains,grid_gains,grid_gains,grid_gains,grid_gains,0.672,0.052
+Which team had the quickest pit crew at the 2019 German Grand Prix?,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.771,0.1
+How many stops did Vettel make at the 2013 Indian Grand Prix?,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.859,0.092
+Give me the pit lane times from the 2022 Dutch GP,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.635,0.072
+What was the average number of pit visits per driver in the 2014 Malaysian Grand Prix?,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.646,0.06
+Who pitted the least at the 2011 Turkish Grand Prix?,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.734,0.022
+Who was crowned world champion in 2012?,season_standings,season_standings,season_standings,season_standings,season_standings,0.821,0.284
+Who topped the points table after the 2015 season?,season_standings,season_standings,season_standings,season_standings,season_standings,0.633,0.218
+List the top ten drivers of 2009,season_standings,season_standings,race_result,season_standings,race_result,0.619,0.01
+How many different drivers raced in 2021?,season_standings,season_standings,season_standings,season_standings,season_standings,0.868,0.209
+Who finished as runner-up in the 2019 championship?,season_standings,season_standings,season_standings,season_standings,season_standings,0.797,0.18
+Will Leclerc be on the podium at Imola in 2022?,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.808,0.053
+Predict Piastri at the 2024 Hungarian Grand Prix,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.656,0.019
+How good are Alonso's chances of finishing in the top three at Monaco?,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.793,0.146
+Use the model to estimate whether Hamilton reaches the podium in Brazil,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.708,0.181
+Is Norris likely to land a podium at Silverstone 2023?,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.751,0.138
+Could you tell me the odds that Russell finishes top three at the 2022 Canadian GP?,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.664,0.104
+What is the population of Italy?,out_of_scope,rephrase,out_of_scope,out_of_scope,out_of_scope,0.451,0.091
+Will it rain during the next Grand Prix?,out_of_scope,out_of_scope,out_of_scope,out_of_scope,out_of_scope,0.59,0.041
+What is Alonso's yearly salary at Aston Martin?,out_of_scope,out_of_scope,out_of_scope,out_of_scope,out_of_scope,0.735,0.074
+Which tyres were fitted to Sainz's car at the start of the race?,out_of_scope,out_of_scope,out_of_scope,out_of_scope,out_of_scope,0.69,0.19
+What is the weight of a 2022 Formula 1 car?,out_of_scope,out_of_scope,out_of_scope,out_of_scope,out_of_scope,0.58,0.105
+Who do you think will win next year's championship?,out_of_scope,out_of_scope,season_standings,out_of_scope,season_standings,0.67,0.218
+Give me the latest news about Mercedes,out_of_scope,out_of_scope,constructor_stats,out_of_scope,constructor_stats,0.591,0.074
+How do I cook pasta?,out_of_scope,rephrase,rephrase,rephrase,rephrase,0.24,0.084
+How many Grand Prix did Coulthard win in total?,driver_season_stats,driver_season_stats,rephrase,driver_season_stats,driver_season_stats,0.772,0.003
+What was Barrichello's points haul in 2002?,driver_season_stats,driver_season_stats,constructor_stats,driver_season_stats,constructor_stats,0.653,0.037
+Has Kubica ever won at Montreal?,driver_circuit_record,driver_circuit_record,rephrase,driver_circuit_record,driver_circuit_record,0.53,0.005
+What is Prost's average finishing position at Estoril?,driver_circuit_record,driver_season_stats,driver_circuit_record,driver_season_stats,driver_circuit_record,0.634,0.04
+How many races did Toyota win between 2002 and 2009?,constructor_stats,driver_season_stats,constructor_stats,driver_season_stats,constructor_stats,0.771,0.082
+Which season was Lotus most reliable in?,constructor_stats,constructor_stats,constructor_stats,constructor_stats,constructor_stats,0.519,0.16
+Did Fangio beat Moss more often when they were teammates?,head_to_head,head_to_head,rephrase,head_to_head,head_to_head,0.437,0.036
+Villeneuve or Frentzen at Williams: who got home first more often?,head_to_head,constructor_stats,head_to_head,constructor_stats,head_to_head,0.518,0.032
+Name the winner of the 1988 San Marino Grand Prix,race_result,race_result,race_result,race_result,race_result,0.585,0.147
+Who finished third at the 2013 Korean GP?,race_result,race_result,race_result,race_result,race_result,0.667,0.012
+Which continent hosts the Buddh International Circuit?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.545,0.155
+How many Formula 1 races took place at Jerez?,circuit_info,circuit_info,circuit_info,circuit_info,circuit_info,0.737,0.087
+How many pole positions did Piquet earn in 1987?,qualifying_record,qualifying_record,qualifying_record,qualifying_record,qualifying_record,0.704,0.136
+What was Button's average qualifying slot in 2011?,qualifying_record,qualifying_record,qualifying_record,qualifying_record,qualifying_record,0.626,0.049
+Who made the biggest progress from the grid at the 2006 San Marino Grand Prix?,grid_gains,grid_gains,grid_gains,grid_gains,grid_gains,0.688,0.013
+Which driver gained the most spots at Spa in 2000?,grid_gains,grid_gains,grid_gains,grid_gains,grid_gains,0.74,0.039
+Which driver made the longest pit stop at the 2012 European Grand Prix?,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.752,0.105
+How many stops did Webber make at the 2010 British GP?,pit_stops,pit_stops,pit_stops,pit_stops,pit_stops,0.789,0.086
+Who won the title in 1994?,season_standings,season_standings,season_standings,season_standings,season_standings,0.74,0.24
+Give me the 2006 final points table,season_standings,season_standings,season_standings,season_standings,season_standings,0.677,0.154
+Is Verstappen predicted to finish on the podium at the 2025 Austrian Grand Prix?,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.839,0.163
+What are Hamilton's chances of a top three finish at Spa?,podium_prediction,podium_prediction,podium_prediction,podium_prediction,podium_prediction,0.771,0.156
+How many people watch Formula 1 on TV?,out_of_scope,rephrase,circuit_info,circuit_info,circuit_info,0.536,0.037
+Which engine supplier is the loudest?,out_of_scope,rephrase,out_of_scope,out_of_scope,out_of_scope,0.538,0.185

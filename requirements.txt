@@ -13,3 +13,8 @@ jupyterlab>=4.0
 ipykernel>=6.0
 kaggle>=1.6          # optional: download the dataset from the command line
 neo4j>=5.0          # Milestone 2: Neo4j Python driver
+# Milestone 3: Graph-RAG assistant
+streamlit>=1.40
+groq>=0.30
+sentence-transformers>=3.0
+python-dotenv>=1.0

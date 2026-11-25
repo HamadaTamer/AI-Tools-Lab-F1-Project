@@ -1,0 +1,775 @@
+[
+  {
+    "id": "q01",
+    "question": "How many wins did Lewis Hamilton have in 2019?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "year": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q02",
+    "question": "How many podiums did Lando Norris have in 2022?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 846,
+        "name": "Lando Norris"
+      },
+      "year": 2022
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q03",
+    "question": "What are Fernando Alonso's career totals?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 4,
+        "name": "Fernando Alonso"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q04",
+    "question": "What about Norris?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 846,
+        "name": "Lando Norris"
+      },
+      "year": 2019
+    },
+    "category": "follow_up",
+    "follows": "q01"
+  },
+  {
+    "id": "q05",
+    "question": "And in 2020?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "year": 2020
+    },
+    "category": "follow_up",
+    "follows": "q01"
+  },
+  {
+    "id": "q06",
+    "question": "How many points did he score in 2012?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 4,
+        "name": "Fernando Alonso"
+      },
+      "year": 2012
+    },
+    "category": "follow_up",
+    "follows": "q03"
+  },
+  {
+    "id": "q07",
+    "question": "How many times has Lewis Hamilton won at Silverstone before 2020?",
+    "intent": "driver_circuit_record",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "circuit": {
+        "circuitId": 9,
+        "name": "Silverstone Circuit"
+      },
+      "year_to": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q08",
+    "question": "What is Sebastian Vettel's record at Monza?",
+    "intent": "driver_circuit_record",
+    "entities": {
+      "driver": {
+        "driverId": 20,
+        "name": "Sebastian Vettel"
+      },
+      "circuit": {
+        "circuitId": 14,
+        "name": "Autodromo Nazionale di Monza"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q09",
+    "question": "How did Charles Leclerc do at Monaco between 2018 and 2022?",
+    "intent": "driver_circuit_record",
+    "entities": {
+      "driver": {
+        "driverId": 844,
+        "name": "Charles Leclerc"
+      },
+      "circuit": {
+        "circuitId": 6,
+        "name": "Circuit de Monaco"
+      },
+      "year_from": 2018,
+      "year_to": 2022
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q10",
+    "question": "And at Monza?",
+    "intent": "driver_circuit_record",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "circuit": {
+        "circuitId": 14,
+        "name": "Autodromo Nazionale di Monza"
+      },
+      "year_to": 2019
+    },
+    "category": "follow_up",
+    "follows": "q07"
+  },
+  {
+    "id": "q11",
+    "question": "How reliable was Ferrari between 2014 and 2021?",
+    "intent": "constructor_stats",
+    "entities": {
+      "constructor": {
+        "constructorId": 6,
+        "name": "Ferrari"
+      },
+      "year_from": 2014,
+      "year_to": 2021
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q12",
+    "question": "How many races did McLaren win in 2012?",
+    "intent": "constructor_stats",
+    "entities": {
+      "constructor": {
+        "constructorId": 1,
+        "name": "McLaren"
+      },
+      "year": 2012
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q13",
+    "question": "Give me Mercedes' career points and wins.",
+    "intent": "constructor_stats",
+    "entities": {
+      "constructor": {
+        "constructorId": 131,
+        "name": "Mercedes"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q14",
+    "question": "Lewis Hamilton vs Bottas: who finished ahead more often?",
+    "intent": "head_to_head",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "driver2": {
+        "driverId": 822,
+        "name": "Valtteri Bottas"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q15",
+    "question": "Compare Max Verstappen and Leclerc head to head.",
+    "intent": "head_to_head",
+    "entities": {
+      "driver": {
+        "driverId": 830,
+        "name": "Max Verstappen"
+      },
+      "driver2": {
+        "driverId": 844,
+        "name": "Charles Leclerc"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q16",
+    "question": "How did Alonso do against Lewis Hamilton at McLaren?",
+    "intent": "head_to_head",
+    "entities": {
+      "driver": {
+        "driverId": 4,
+        "name": "Fernando Alonso"
+      },
+      "driver2": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "constructor": {
+        "constructorId": 1,
+        "name": "McLaren"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q17",
+    "question": "And against Nico Rosberg?",
+    "intent": "head_to_head",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "driver2": {
+        "driverId": 3,
+        "name": "Nico Rosberg"
+      }
+    },
+    "category": "follow_up",
+    "follows": "q14"
+  },
+  {
+    "id": "q18",
+    "question": "Who won the 2019 British Grand Prix?",
+    "intent": "race_result",
+    "entities": {
+      "race_name": "British Grand Prix",
+      "year": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q19",
+    "question": "Show me the top finishers of the 2021 Italian Grand Prix.",
+    "intent": "race_result",
+    "entities": {
+      "race_name": "Italian Grand Prix",
+      "year": 2021
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q20",
+    "question": "Who was on the podium at the 2008 Monaco Grand Prix?",
+    "intent": "race_result",
+    "entities": {
+      "race_name": "Monaco Grand Prix",
+      "year": 2008
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q21",
+    "question": "And in 2018?",
+    "intent": "race_result",
+    "entities": {
+      "race_name": "British Grand Prix",
+      "year": 2018
+    },
+    "category": "follow_up",
+    "follows": "q18"
+  },
+  {
+    "id": "q22",
+    "question": "Where is Silverstone and how many races were held there?",
+    "intent": "circuit_info",
+    "entities": {
+      "circuit": {
+        "circuitId": 9,
+        "name": "Silverstone Circuit"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q23",
+    "question": "Tell me about the Suzuka circuit.",
+    "intent": "circuit_info",
+    "entities": {
+      "circuit": {
+        "circuitId": 22,
+        "name": "Suzuka Circuit"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q24",
+    "question": "How many Grands Prix have been held at Monza?",
+    "intent": "circuit_info",
+    "entities": {
+      "circuit": {
+        "circuitId": 14,
+        "name": "Autodromo Nazionale di Monza"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q25",
+    "question": "How many poles did Max Verstappen get in 2022?",
+    "intent": "qualifying_record",
+    "entities": {
+      "driver": {
+        "driverId": 830,
+        "name": "Max Verstappen"
+      },
+      "year": 2022
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q26",
+    "question": "What was Charles Leclerc's average qualifying position in 2019?",
+    "intent": "qualifying_record",
+    "entities": {
+      "driver": {
+        "driverId": 844,
+        "name": "Charles Leclerc"
+      },
+      "year": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q27",
+    "question": "How many times did Lewis Hamilton reach Q3 between 2014 and 2020?",
+    "intent": "qualifying_record",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "year_from": 2014,
+      "year_to": 2020
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q28",
+    "question": "Who gained the most places at the 2021 Italian Grand Prix?",
+    "intent": "grid_gains",
+    "entities": {
+      "race_name": "Italian Grand Prix",
+      "year": 2021
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q29",
+    "question": "Biggest grid climbers at the 2019 Brazilian Grand Prix?",
+    "intent": "grid_gains",
+    "entities": {
+      "race_name": "Brazilian Grand Prix",
+      "year": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q30",
+    "question": "Who made up the most places at Spa in 2022?",
+    "intent": "grid_gains",
+    "entities": {
+      "circuit": {
+        "circuitId": 13,
+        "name": "Circuit de Spa-Francorchamps"
+      },
+      "year": 2022
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q31",
+    "question": "Who had the fastest pit stop at the 2023 Monaco Grand Prix?",
+    "intent": "pit_stops",
+    "entities": {
+      "race_name": "Monaco Grand Prix",
+      "year": 2023
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q32",
+    "question": "How many pit stops did Lewis Hamilton make at the 2021 Hungarian Grand Prix?",
+    "intent": "pit_stops",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "race_name": "Hungarian Grand Prix",
+      "year": 2021
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q33",
+    "question": "What were the quickest stops at the 2019 Italian Grand Prix?",
+    "intent": "pit_stops",
+    "entities": {
+      "race_name": "Italian Grand Prix",
+      "year": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q34",
+    "question": "Who won the 2021 championship?",
+    "intent": "season_standings",
+    "entities": {
+      "year": 2021
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q35",
+    "question": "Show the 2008 drivers' standings.",
+    "intent": "season_standings",
+    "entities": {
+      "year": 2008
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q36",
+    "question": "How many drivers took part in the 2015 season?",
+    "intent": "season_standings",
+    "entities": {
+      "year": 2015
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q37",
+    "question": "How many wins did Schumacher have?",
+    "intent": "driver_season_stats",
+    "entities": {},
+    "category": "ambiguous",
+    "follows": null,
+    "ambiguous": {
+      "driver": [
+        "Michael Schumacher",
+        "Ralf Schumacher",
+        "Mick Schumacher"
+      ]
+    }
+  },
+  {
+    "id": "q38",
+    "question": "How did Schumacher do at Monza before 2005?",
+    "intent": "driver_circuit_record",
+    "entities": {
+      "circuit": {
+        "circuitId": 14,
+        "name": "Autodromo Nazionale di Monza"
+      },
+      "year_to": 2004
+    },
+    "category": "ambiguous",
+    "follows": null,
+    "ambiguous": {
+      "driver": [
+        "Michael Schumacher",
+        "Ralf Schumacher",
+        "Mick Schumacher"
+      ]
+    }
+  },
+  {
+    "id": "q39",
+    "question": "How many points did Verstappen score in 2023?",
+    "intent": "driver_season_stats",
+    "entities": {
+      "driver": {
+        "driverId": 830,
+        "name": "Max Verstappen"
+      },
+      "year": 2023
+    },
+    "category": "ambiguous",
+    "follows": null
+  },
+  {
+    "id": "q40",
+    "question": "Will Lewis Hamilton finish on the podium at the 2020 British Grand Prix?",
+    "intent": "podium_prediction",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "race_name": "British Grand Prix",
+      "year": 2020
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q41",
+    "question": "Predict whether Charles Leclerc gets a podium at Monza in 2022.",
+    "intent": "podium_prediction",
+    "entities": {
+      "driver": {
+        "driverId": 844,
+        "name": "Charles Leclerc"
+      },
+      "race_name": "Italian Grand Prix",
+      "year": 2022
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q42",
+    "question": "What tyre compound did Hamilton use at Monaco in 2019?",
+    "intent": "out_of_scope",
+    "entities": {},
+    "category": "out_of_scope",
+    "follows": null
+  },
+  {
+    "id": "q43",
+    "question": "Who won the 2025 Formula 1 championship?",
+    "intent": "season_standings",
+    "entities": {
+      "year": 2025
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q44",
+    "question": "What was the weather at the 2019 British Grand Prix?",
+    "intent": "out_of_scope",
+    "entities": {},
+    "category": "out_of_scope",
+    "follows": null
+  },
+  {
+    "id": "q45",
+    "question": "What is the capital of France?",
+    "intent": "out_of_scope",
+    "entities": {},
+    "category": "out_of_scope",
+    "follows": null
+  },
+  {
+    "id": "q46",
+    "question": "How many times has Max Verstappen won at Magny-Cours?",
+    "intent": "driver_circuit_record",
+    "entities": {
+      "driver": {
+        "driverId": 830,
+        "name": "Max Verstappen"
+      },
+      "circuit": {
+        "circuitId": 8,
+        "name": "Circuit de Nevers Magny-Cours"
+      }
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q47",
+    "question": "Who had the fastest pit stop at the 2005 Monaco Grand Prix?",
+    "intent": "pit_stops",
+    "entities": {
+      "race_name": "Monaco Grand Prix",
+      "year": 2005
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q48",
+    "question": "How many poles did Ayrton Senna get in 1985?",
+    "intent": "qualifying_record",
+    "entities": {
+      "driver": {
+        "driverId": 102,
+        "name": "Ayrton Senna"
+      },
+      "year": 1985
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q49",
+    "question": "Lewis Hamilton vs Alain Prost head to head.",
+    "intent": "head_to_head",
+    "entities": {
+      "driver": {
+        "driverId": 1,
+        "name": "Lewis Hamilton"
+      },
+      "driver2": {
+        "driverId": 117,
+        "name": "Alain Prost"
+      }
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q50",
+    "question": "Who won the Qatar Grand Prix in 2010?",
+    "intent": "race_result",
+    "entities": {
+      "race_name": "Qatar Grand Prix",
+      "year": 2010
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q51",
+    "question": "Show the 2030 drivers' standings.",
+    "intent": "season_standings",
+    "entities": {
+      "year": 2030
+    },
+    "category": "empty",
+    "follows": null
+  },
+  {
+    "id": "q52",
+    "question": "Who won at Silverstone in 2019?",
+    "intent": "race_result",
+    "entities": {
+      "circuit": {
+        "circuitId": 9,
+        "name": "Silverstone Circuit"
+      },
+      "year": 2019
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q53",
+    "question": "Who had the fastest pit stop at Monza in 2022?",
+    "intent": "pit_stops",
+    "entities": {
+      "circuit": {
+        "circuitId": 14,
+        "name": "Autodromo Nazionale di Monza"
+      },
+      "year": 2022
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q54",
+    "question": "How many wins did Hamilton have at Silverstone before 2020?",
+    "intent": "driver_circuit_record",
+    "entities": {},
+    "category": "ambiguous",
+    "follows": null,
+    "ambiguous": {
+      "driver": [
+        "Lewis Hamilton",
+        "Duncan Hamilton"
+      ]
+    }
+  },
+  {
+    "id": "q55",
+    "question": "How many podiums did Williams score from 2014 to 2021?",
+    "intent": "constructor_stats",
+    "entities": {
+      "constructor": {
+        "constructorId": 3,
+        "name": "Williams"
+      },
+      "year_from": 2014,
+      "year_to": 2021
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q56",
+    "question": "In which country is the Hungaroring?",
+    "intent": "circuit_info",
+    "entities": {
+      "circuit": {
+        "circuitId": 11,
+        "name": "Hungaroring"
+      }
+    },
+    "category": "normal",
+    "follows": null
+  },
+  {
+    "id": "q57",
+    "question": "Which driver gained the most positions at the 2016 Mexican Grand Prix?",
+    "intent": "grid_gains",
+    "entities": {
+      "race_name": "Mexican Grand Prix",
+      "year": 2016
+    },
+    "category": "normal",
+    "follows": null
+  }
+]

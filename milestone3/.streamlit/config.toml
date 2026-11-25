@@ -1,0 +1,12 @@
+# Plain light theme: off-white page, one dark-red accent, Source Sans text, square corners.
+[theme]
+base = "light"
+primaryColor = "#b3261e"
+backgroundColor = "#fbfaf8"
+secondaryBackgroundColor = "#f1efea"
+textColor = "#222222"
+font = "sans-serif"
+baseRadius = "none"
+
+[browser]
+gatherUsageStats = false

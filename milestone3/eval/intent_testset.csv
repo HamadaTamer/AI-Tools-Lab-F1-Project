@@ -1,0 +1,95 @@
+question,intent
+How many victories did Button take in 2009?,driver_season_stats
+What was Massa's points total in 2008?,driver_season_stats
+Tell me how many podiums Webber collected between 2010 and 2013,driver_season_stats
+How many races did Raikkonen win in his whole career?,driver_season_stats
+What was Gasly's average finish in 2019?,driver_season_stats
+How many times did Rosberg win at Monaco?,driver_circuit_record
+Has Ricciardo ever finished on the podium at the Hungaroring?,driver_circuit_record
+Tell me Norris's results around Suzuka after 2019,driver_circuit_record
+What is Schumacher's best result at Magny-Cours?,driver_circuit_record
+How did Perez do at the Baku City Circuit?,driver_circuit_record
+How many wins does Vettel have at Singapore?,driver_circuit_record
+What was the points total of Ferrari in 2004?,constructor_stats
+How dependable was Renault's car from 2005 to 2008?,constructor_stats
+How many Grand Prix victories did Brawn get in 2009?,constructor_stats
+Did McLaren finish many races in 2015 or did they retire often?,constructor_stats
+What did Sauber achieve in terms of points since 2010?,constructor_stats
+How many wins did Red Bull get in 2013?,constructor_stats
+Did Alonso out-finish Hamilton at McLaren in 2007?,head_to_head
+Piquet or Mansell: who came home in front more often?,head_to_head
+How often did Rosberg beat Schumacher as teammates at Mercedes?,head_to_head
+Räikkönen vs Massa at Ferrari,head_to_head
+Verstappen against Ricciardo at Red Bull in 2016 - who was ahead more races?,head_to_head
+Which of Barrichello and Schumacher finished higher more often?,head_to_head
+Who was victorious at the 2005 Spanish Grand Prix?,race_result
+Give me the top three of the 2014 Abu Dhabi GP,race_result
+Which driver won the 2003 Japanese Grand Prix?,race_result
+Who crossed the line first at the 2009 Chinese GP?,race_result
+Who stood on the podium in the 2018 Azerbaijan Grand Prix?,race_result
+Who claimed victory in the 2007 Hungarian Grand Prix?,race_result
+Which country is the Zandvoort track in?,circuit_info
+How often has the Hungaroring hosted a Grand Prix?,circuit_info
+In what year did Sepang first host a race?,circuit_info
+What city is Albert Park near?,circuit_info
+Give me some facts on the Yas Marina circuit,circuit_info
+When did Monaco last hold a Grand Prix?,circuit_info
+In how many races did Prost start from pole?,qualifying_record
+How often did Hamilton make Q3 between 2015 and 2018?,qualifying_record
+What was Ricciardo's mean starting position in 2014?,qualifying_record
+How many times did Mansell qualify on the front row?,qualifying_record
+Count Rosberg's pole positions in 2016,qualifying_record
+Did Raikkonen often qualify in the top three in 2005?,qualifying_record
+Which driver went up the most places from his starting slot at the 2008 Chinese Grand Prix?,grid_gains
+Who was the biggest mover from grid to chequered flag at Imola in 2005?,grid_gains
+Who gained the most positions at the 2017 Azerbaijan GP?,grid_gains
+Top five drivers by places gained from the grid in the 2010 Korean Grand Prix,grid_gains
+Which racer overtook the most rivals at Hockenheim in 2018?,grid_gains
+Which team had the quickest pit crew at the 2019 German Grand Prix?,pit_stops
+How many stops did Vettel make at the 2013 Indian Grand Prix?,pit_stops
+Give me the pit lane times from the 2022 Dutch GP,pit_stops
+What was the average number of pit visits per driver in the 2014 Malaysian Grand Prix?,pit_stops
+Who pitted the least at the 2011 Turkish Grand Prix?,pit_stops
+Who was crowned world champion in 2012?,season_standings
+Who topped the points table after the 2015 season?,season_standings
+List the top ten drivers of 2009,season_standings
+How many different drivers raced in 2021?,season_standings
+Who finished as runner-up in the 2019 championship?,season_standings
+Will Leclerc be on the podium at Imola in 2022?,podium_prediction
+Predict Piastri at the 2024 Hungarian Grand Prix,podium_prediction
+How good are Alonso's chances of finishing in the top three at Monaco?,podium_prediction
+Use the model to estimate whether Hamilton reaches the podium in Brazil,podium_prediction
+Is Norris likely to land a podium at Silverstone 2023?,podium_prediction
+Could you tell me the odds that Russell finishes top three at the 2022 Canadian GP?,podium_prediction
+What is the population of Italy?,out_of_scope
+Will it rain during the next Grand Prix?,out_of_scope
+What is Alonso's yearly salary at Aston Martin?,out_of_scope
+Which tyres were fitted to Sainz's car at the start of the race?,out_of_scope
+What is the weight of a 2022 Formula 1 car?,out_of_scope
+Who do you think will win next year's championship?,out_of_scope
+Give me the latest news about Mercedes,out_of_scope
+How do I cook pasta?,out_of_scope
+How many Grand Prix did Coulthard win in total?,driver_season_stats
+What was Barrichello's points haul in 2002?,driver_season_stats
+Has Kubica ever won at Montreal?,driver_circuit_record
+What is Prost's average finishing position at Estoril?,driver_circuit_record
+How many races did Toyota win between 2002 and 2009?,constructor_stats
+Which season was Lotus most reliable in?,constructor_stats
+Did Fangio beat Moss more often when they were teammates?,head_to_head
+Villeneuve or Frentzen at Williams: who got home first more often?,head_to_head
+Name the winner of the 1988 San Marino Grand Prix,race_result
+Who finished third at the 2013 Korean GP?,race_result
+Which continent hosts the Buddh International Circuit?,circuit_info
+How many Formula 1 races took place at Jerez?,circuit_info
+How many pole positions did Piquet earn in 1987?,qualifying_record
+What was Button's average qualifying slot in 2011?,qualifying_record
+Who made the biggest progress from the grid at the 2006 San Marino Grand Prix?,grid_gains
+Which driver gained the most spots at Spa in 2000?,grid_gains
+Which driver made the longest pit stop at the 2012 European Grand Prix?,pit_stops
+How many stops did Webber make at the 2010 British GP?,pit_stops
+Who won the title in 1994?,season_standings
+Give me the 2006 final points table,season_standings
+Is Verstappen predicted to finish on the podium at the 2025 Austrian Grand Prix?,podium_prediction
+What are Hamilton's chances of a top three finish at Spa?,podium_prediction
+How many people watch Formula 1 on TV?,out_of_scope
+Which engine supplier is the loudest?,out_of_scope
